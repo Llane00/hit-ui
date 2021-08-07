@@ -4,14 +4,18 @@
   "description": "another react ui library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Llane00/hit-ui.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "ui"
+  ],
+  "author": "Llane00",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Llane00/hit-ui/issues"
@@ -19,10 +23,14 @@
   "homepage": "https://github.com/Llane00/hit-ui#readme",
   "dependencies": {
     "awesome-typescript-loader": "^5.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
   },
   "devDependencies": {
+    "@types/react": "^17.0.16",
+    "@types/react-dom": "^17.0.9",
     "html-webpack-plugin": "^3.2.0",
     "typescript": "^4.3.5",
     "webpack-dev-server": "^3.11.2"
