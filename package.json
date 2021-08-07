@@ -21,5 +21,8 @@
     "awesome-typescript-loader": "^5.2.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5"
   }
 }
