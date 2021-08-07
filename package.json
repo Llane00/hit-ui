@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Llane00/hit-ui/issues"
   },
-  "homepage": "https://github.com/Llane00/hit-ui#readme"
+  "homepage": "https://github.com/Llane00/hit-ui#readme",
+  "dependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
 }
