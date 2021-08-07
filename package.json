@@ -16,24 +16,24 @@
     "ui"
   ],
   "author": "Llane00",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Llane00/hit-ui/issues"
   },
   "homepage": "https://github.com/Llane00/hit-ui#readme",
   "dependencies": {
-    "awesome-typescript-loader": "^5.2.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "react": "^16.8.7",
+    "react-dom": "^16.8.2"
   },
   "devDependencies": {
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.2",
-    "html-webpack-plugin": "^3.2.0",
-    "tslint": "^6.1.3",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2",
+    "awesome-typescript-loader": "^5.2.1",
     "typescript": "^4.3.5",
+    "tslint": "^6.1.3",
+    "html-webpack-plugin": "^3.2.0",
     "webpack-dev-server": "^3.11.2"
   }
 }

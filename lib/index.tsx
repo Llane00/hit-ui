@@ -3,4 +3,4 @@ import ReactDOM from 'react-dom';
 import Button from './Button';
 
 
-ReactDOM.render(<Button/>, document.getElementById("root"));
+ReactDOM.render(<Button />, document.getElementById("root"));

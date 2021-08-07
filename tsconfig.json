@@ -23,21 +23,17 @@
     "noUnusedLocals": true
   },
   "include": [
-    "lib/**/*",
-    "example/**/*"
+    "lib/**/*"
   ],
   "exclude": [
     "node_modules",
     "build",
     "dist",
-    "public",
-    "webpack",
-    "jest",
-    "*.js",
-    "**/*.test.ts",
-    "**/*.test.tsx",
     "scripts",
     "acceptance-tests",
-    "src/setupTests.ts"
+    "webpack",
+    "jest",
+    "src/setupTests.ts",
+    "*.js"
   ]
 }
