@@ -1,5 +1,5 @@
-console.log('hi welcome to hit-ui !')
+import React from "react";
+import ReactDOM from "react-dom";
+import Button from "./Button";
 
-const div = document.createElement('div')
-div.innerText= 'hi welcome to hit-ui !'
-document.body.appendChild(div)
+ReactDOM.render(<Button/>, document.getElementById("root"));
