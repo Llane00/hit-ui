@@ -4,5 +4,8 @@ import Icon from './icon';
 
 
 ReactDOM.render(<div>
-  <Icon name="wechat" />
+  <Icon name="up" />
+  <Icon name="right" />
+  <Icon name="down" />
+  <Icon name="left" />
 </div>, document.getElementById("root"));
