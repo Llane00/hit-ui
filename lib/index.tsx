@@ -4,8 +4,11 @@ import Icon from './icon';
 
 
 ReactDOM.render(<div>
-  <Icon name="up" />
-  <Icon name="right" />
-  <Icon name="down" />
-  <Icon name="left" />
+  <Icon name="up" 
+    className="test-icon"
+    onClick={()=>{console.log("onClick")}}
+    onMouseEnter={()=>{console.log("onMouseEnter")}}
+    onMouseMove={()=>{console.log("onMouseMove")}}
+    onMouseLeave={()=>{console.log("onMouseLeave")}}
+  />
 </div>, document.getElementById("root"));
