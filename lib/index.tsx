@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from './Button';
+import Icon from './icon';
 
 
-ReactDOM.render(<Button />, document.getElementById("root"));
+ReactDOM.render(<div>
+  <Icon name="up" 
+    className="test-icon"
+    onClick={()=>{console.log("onClick")}}
+    onMouseEnter={()=>{console.log("onMouseEnter")}}
+    onMouseMove={()=>{console.log("onMouseMove")}}
+    onMouseLeave={()=>{console.log("onMouseLeave")}}
+  />
+</div>, document.getElementById("root"));
