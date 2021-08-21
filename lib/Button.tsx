@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-function Button() {
+interface buttonProps extends React.DOMAttributes<Element> {
+
+}
+
+const Button: React.FunctionComponent<buttonProps> = (props) => {
   const [n, setN] = useState(0);
 
   function handleClick() {
@@ -9,7 +13,7 @@ function Button() {
   }
 
   return (
-    <div>
+    <div {...props} >
       <div>number: {n}</div>
       <button onClick={handleClick}>add 1</button>
     </div>
