@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import './dialog.scss';
 
 interface props {
@@ -23,24 +24,27 @@ const Dialog: React.FunctionComponent<props> = (props) => {
   }
 
   return (
-    props.visible?
-    <div className={scopedClass('dialog')}>
-      <div className={scopedClass('mask')}></div>
-      <div className={scopedClass('content')}>
-        <div className={scopedClass('close')} onClick={onOff}>x</div>
-        <header className={scopedClass('header')}>
-         {props.title || '提示'} 
-        </header>
-        <main className={scopedClass('main')}>{props.children}</main>
+    ReactDOM.createPortal(
+      props.visible?
+      <div className={scopedClass('dialog')}>
+        <div className={scopedClass('mask')}></div>
+        <div className={scopedClass('content')}>
+          <div className={scopedClass('close')} onClick={onOff}>x</div>
+          <header className={scopedClass('header')}>
+          {props.title || '提示'} 
+          </header>
+          <main className={scopedClass('main')}>{props.children}</main>
 
-        {props.buttons && props.buttons.length>0?
-        <footer className={scopedClass('footer')}>
-          {props.buttons.map((button, index) => React.cloneElement(button, {key: index}))}
-        </footer>
-        : null}
+          {props.buttons && props.buttons.length>0?
+          <footer className={scopedClass('footer')}>
+            {props.buttons.map((button, index) => React.cloneElement(button, {key: index}))}
+          </footer>
+          : null}
+        </div>
       </div>
-    </div>
-    : null
+      : null, 
+      document.body
+    )
   )
 }
 
