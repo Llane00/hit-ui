@@ -28,16 +28,14 @@
 
   &-close {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: .7em;
+    right: .7em;
     width: 1.5em;
     height: 1.5em;
-    color: #FFF;
     line-height: 1.5em;
     text-align: center;
-    background-color: rgb(235, 68, 68);
     border-radius: 50%;
-
+    cursor: pointer;
   }
 
   &-header {
@@ -60,6 +58,7 @@
       margin-left: 1.5em;
       width: 5em;
       height: 2.5em;
+      border: none;
 
       &:first-child {
         margin-left: 0;

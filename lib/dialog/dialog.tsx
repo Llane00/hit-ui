@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import './dialog.scss';
+import Icon from '../icon/icon';
+import classPrefixMaker from "../utils/classPrefixMaker";
 
 interface props {
   visible: boolean,
@@ -10,26 +12,24 @@ interface props {
   onOff: React.MouseEventHandler,
 }
 
-const classMaker = (prefix:string) => {
-  return function(classNameString:string) {
-    return [prefix, classNameString].filter(Boolean).join('-');
-  }
-}
-const scopedClass = classMaker("hit-ui");
-
+const scopedClass = classPrefixMaker("hit-ui");
 
 const Dialog: React.FunctionComponent<props> = (props) => {
   const onOff:React.MouseEventHandler = (e) => {
     props.onOff(e);
   }
 
+  const onClickMask:React.MouseEventHandler = (e) => {
+    props.maskClosable && props.onOff(e);
+  }
+
   return (
     ReactDOM.createPortal(
       props.visible?
       <div className={scopedClass('dialog')}>
-        <div className={scopedClass('mask')}></div>
+        <div className={scopedClass('mask')} onClick={onClickMask}></div>
         <div className={scopedClass('content')}>
-          <div className={scopedClass('close')} onClick={onOff}>x</div>
+          <Icon className={scopedClass('close')} name="close" onClick={onOff} />
           <header className={scopedClass('header')}>
           {props.title || '提示'} 
           </header>
