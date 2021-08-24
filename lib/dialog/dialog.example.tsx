@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Dialog from "./dialog"
+import {alert} from "./dialog"
 
 const dialogExample = () => {
   const [visible, setVisible] = useState(false)
@@ -26,7 +27,13 @@ const dialogExample = () => {
           </div>
         </Dialog>
       </div>
-
+      
+      <div>
+        <h2>example 2 函数式调用 Dialog</h2>
+        <button onClick={
+          () => {alert("111")}
+        }>alert</button>
+      </div>
     </div>
   )
 }
