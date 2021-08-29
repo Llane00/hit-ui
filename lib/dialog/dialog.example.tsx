@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-import Dialog from "./dialog"
-import {alert} from "./dialog"
+import Dialog, {alert} from "./dialog"
 
 const dialogExample = () => {
   const [visible, setVisible] = useState(false)

@@ -53,8 +53,13 @@ Dialog.defaultProps = {
 }
 
 const alert = (content: string) => {
-  const component = <Dialog visible={true} onOff={()=>{}}>{content}</Dialog>
   const div = document.createElement("div");
+  const onOff = () => {
+    React.cloneElement(component, {visible: false}, div)
+    ReactDOM.unmountComponentAtNode(div);
+    div.remove()
+  }
+  const component = <Dialog visible={true} onOff={onOff}>{content}</Dialog>
   document.body.appendChild(div);
   ReactDOM.render(component, div)
 };
