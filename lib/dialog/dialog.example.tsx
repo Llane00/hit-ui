@@ -1,9 +1,11 @@
 import React, { useState } from "react"
-import Dialog, {alert} from "./dialog"
+import Dialog, { alert, confirm, modal } from "./dialog"
 
 const dialogExample = () => {
   const [visible, setVisible] = useState(false)
-
+  const openModal = () => {
+    const close = modal(<div><h1>你好</h1><button onClick={() => close()}>关闭</button></div>, () => { console.log('no') })
+  }
   return (
     <div>
       <div>
@@ -12,26 +14,42 @@ const dialogExample = () => {
           () => setVisible(!visible)
         }>弹出Dialog</button>
 
-        <Dialog 
-          visible={visible} 
+        <Dialog
+          visible={visible}
           buttons={[
-            <button onClick={()=>{setVisible(false)}} >Yes</button>,
-            <button onClick={()=>{setVisible(false)}} >No</button>
+            <button onClick={() => { setVisible(false) }} >Yes</button>,
+            <button onClick={() => { setVisible(false) }} >No</button>
           ]}
-          onOff={()=>{setVisible(false)}}
+          onOff={() => { setVisible(false) }}
         >
           <div>
             <div>balabala</div>
-            <button onClick={()=>{setVisible(false)}}>close</button>
+            <button onClick={() => { setVisible(false) }}>close</button>
           </div>
         </Dialog>
       </div>
-      
+
       <div>
-        <h2>example 2 函数式调用 Dialog</h2>
+        <h2>example 2 alert函数式调用 Dialog</h2>
         <button onClick={
-          () => {alert("111")}
+          () => { alert("111") }
         }>alert</button>
+      </div>
+
+      <div>
+        <h2>example 3 confirm函数式调用 Dialog</h2>
+        <button onClick={
+          () => { confirm("111", () => { console.log('yes') }, () => { console.log('no') }) }
+        }>confirm</button>
+      </div>
+
+      <div>
+        <h3>example 4 modal函数式调用 Dialog</h3>
+        <button onClick={
+          () => openModal()
+        }>
+          modal
+        </button>
       </div>
     </div>
   )
