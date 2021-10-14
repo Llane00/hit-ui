@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import './dialog.scss';
 import Icon from '../icon/icon';
 import classPrefixMaker from "../utils/classPrefixMaker";
-import { ReactFragment } from "react-router/node_modules/@types/react";
 
 interface props {
   visible: boolean,
@@ -55,83 +54,64 @@ Dialog.defaultProps = {
   maskClosable: true
 }
 
-const alert = (content: string) => {
-  const div = document.createElement("div");
-  const onOff = () => {
-    React.cloneElement(component, { visible: false }, div)
-    ReactDOM.unmountComponentAtNode(div);
+const modal = (
+  content: React.ReactNode,
+  buttons?: Array<React.ReactElement>,
+  afterClose?: () => void,
+) => {
+  const component = (
+    <Dialog
+      visible={true}
+      buttons={buttons}
+      onOff={() => {
+        close();
+        afterClose && afterClose();
+      }}
+    >
+      {content}
+    </Dialog >
+  )
+  const div = document.createElement("div")
+  const close = () => {
+    ReactDOM.render(React.cloneElement(component, { visible: false }), div)
+    ReactDOM.unmountComponentAtNode(div)
     div.remove()
   }
-  const component = <Dialog visible={true} onOff={onOff}>{content}</Dialog>
-  document.body.appendChild(div);
+
+  document.body.appendChild(div)
   ReactDOM.render(component, div)
+
+  return close;
+}
+
+const alert = (content: string) => {
+  const button = <button onClick={() => close()}>ok</button>;
+  const close = modal(content, [button]);
 };
 
 const confirm = (
-  content: React.ReactNode | React.ReactFragment,
+  content: string,
   onOnCallBack?: () => void,
   onOffCallBack?: () => void
 ) => {
   const onOn = () => {
-    onClose()
+    close()
     onOnCallBack && onOnCallBack()
   }
+  
   const onOff = () => {
-    onClose()
+    close()
     onOffCallBack && onOffCallBack()
   }
-  const component = (
-    <Dialog
-      visible={true}
-      onOn={onOnCallBack}
-      onOff={onOff}
-      buttons={
-        [
-          <button onClick={onOn}>yes</button>,
-          <button onClick={onOff}>no</button>
-        ]
-      }>
-      {content}
-    </Dialog>
-  );
-  const div = document.createElement("div");
-  const onClose = () => {
-    React.cloneElement(component, { visible: false }, div)
-    ReactDOM.unmountComponentAtNode(div);
-    div.remove()
-  }
+  
+  const buttons = [
+    <button onClick={onOn}>yes</button>,
+    <button onClick={onOff}>no</button>
+  ];
 
-  document.body.appendChild(div);
-  ReactDOM.render(component, div)
-  return onClose;
+  const close = modal(content, buttons, onOffCallBack);
 }
 
-const modal = (
-  content: React.ReactNode | ReactFragment,
-  onOffCallBack?: () => void
-) => {
-  const onOff = () => {
-    onClose()
-    onOffCallBack && onOffCallBack()
-  }
-  const component = (
-    <Dialog
-      visible={true}
-      onOff={onOff}>
-      {content}
-    </Dialog>
-  );
-  const div = document.createElement('div')
-  const onClose = () => {
-    React.cloneElement(component, { visible: false }, div)
-    ReactDOM.unmountComponentAtNode(div)
-    div.remove()
-  }
-  document.body.appendChild(div);
-  ReactDOM.render(component, div);
-  return onClose;
-}
-
-export { alert, confirm, modal }
+export { modal, alert, confirm }
 
 export default Dialog;

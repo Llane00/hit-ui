@@ -4,7 +4,11 @@ import Dialog, { alert, confirm, modal } from "./dialog"
 const dialogExample = () => {
   const [visible, setVisible] = useState(false)
   const openModal = () => {
-    const close = modal(<div><h1>你好</h1><button onClick={() => close()}>关闭</button></div>, () => { console.log('no') })
+    const close = modal(
+      <div><h1>你好</h1><button onClick={() => close()}>关闭</button></div>,
+      [],
+      () => { console.log('no') }
+    )
   }
   return (
     <div>
@@ -44,7 +48,7 @@ const dialogExample = () => {
       </div>
 
       <div>
-        <h3>example 4 modal函数式调用 Dialog</h3>
+        <h2>example 4 modal函数式调用 Dialog</h2>
         <button onClick={
           () => openModal()
         }>
