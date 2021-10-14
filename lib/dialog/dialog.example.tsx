@@ -24,6 +24,7 @@ const dialogExample = () => {
             <button onClick={() => { setVisible(false) }} >Yes</button>,
             <button onClick={() => { setVisible(false) }} >No</button>
           ]}
+          maskClosable={false}
           onOff={() => { setVisible(false) }}
         >
           <div>

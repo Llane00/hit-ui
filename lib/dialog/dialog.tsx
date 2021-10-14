@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import './dialog.scss';
 import Icon from '../icon/icon';
@@ -8,6 +8,7 @@ interface props {
   visible: boolean,
   title?: string,
   buttons?: Array<React.ReactElement>,
+  maskVisible?: boolean,
   maskClosable?: boolean,
   onOn?: React.MouseEventHandler,
   onOff: React.MouseEventHandler,
@@ -24,33 +25,34 @@ const Dialog: React.FunctionComponent<props> = (props) => {
     props.maskClosable && props.onOff(e);
   }
 
-  return (
-    ReactDOM.createPortal(
-      props.visible ?
-        <div className={scopedClass('dialog')}>
-          <div className={scopedClass('mask')} onClick={onClickMask}></div>
-          <div className={scopedClass('content')}>
-            <Icon className={scopedClass('close')} name="close" onClick={onOff} />
-            <header className={scopedClass('header')}>
-              {props.title || '提示'}
-            </header>
-            <main className={scopedClass('main')}>{props.children}</main>
+  const component = props.visible &&
+    <Fragment>
+      <div className={scopedClass('dialog')}>
+        {
+          props.maskVisible && <div className={scopedClass('mask')} onClick={onClickMask}></div>
+        }
+        <div className={scopedClass('content')}>
+          <Icon className={scopedClass('close')} name="close" onClick={onOff} />
+          <header className={scopedClass('header')}>
+            {props.title || '提示'}
+          </header>
+          <main className={scopedClass('main')}>{props.children}</main>
 
-            {
-              props.buttons && props.buttons.length > 0 &&
-              <footer className={scopedClass('footer')}>
-                {props.buttons.map((button, index) => React.cloneElement(button, { key: index }))}
-              </footer>
-            }
-          </div>
+          {
+            props.buttons && props.buttons.length > 0 &&
+            <footer className={scopedClass('footer')}>
+              {props.buttons.map((button, index) => React.cloneElement(button, { key: index }))}
+            </footer>
+          }
         </div>
-        : null,
-      document.body
-    )
-  )
+      </div>
+    </Fragment>
+
+  return ReactDOM.createPortal(component, document.body);
 }
 
 Dialog.defaultProps = {
+  maskVisible: true,
   maskClosable: true
 }
 
@@ -98,12 +100,12 @@ const confirm = (
     close()
     onOnCallBack && onOnCallBack()
   }
-  
+
   const onOff = () => {
     close()
     onOffCallBack && onOffCallBack()
   }
-  
+
   const buttons = [
     <button onClick={onOn}>yes</button>,
     <button onClick={onOff}>no</button>
