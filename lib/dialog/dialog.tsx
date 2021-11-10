@@ -1,79 +1,81 @@
-import React, { Fragment } from "react";
-import ReactDOM from "react-dom";
-import './dialog.scss';
-import Icon from '../icon/icon';
-import classPrefixMaker from "../utils/classPrefixMaker";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './dialog.scss'
+import Icon from '../icon/icon'
+import classPrefixMaker from '../utils/classPrefixMaker'
 
-interface props {
-  visible: boolean,
-  title?: string,
-  buttons?: Array<React.ReactElement>,
-  maskVisible?: boolean,
-  maskClosable?: boolean,
-  onOn?: React.MouseEventHandler,
-  onOff: React.MouseEventHandler,
+interface IProps {
+  visible: boolean
+  title?: string
+  buttons?: Array<React.ReactElement>
+  maskVisible?: boolean
+  maskClosable?: boolean
+  onYes?: React.MouseEventHandler
+  onNo: React.MouseEventHandler
 }
 
-const scopedClass = classPrefixMaker("hit-ui");
+const scopedClass = classPrefixMaker('hit-ui')
 
-const Dialog: React.FunctionComponent<props> = (props) => {
-  const onOff: React.MouseEventHandler = (e) => {
-    props.onOff(e);
+const Dialog: React.FC<IProps> = (props) => {
+  const onNo: React.MouseEventHandler = (e) => {
+    props.onNo(e)
   }
 
   const onClickMask: React.MouseEventHandler = (e) => {
-    props.maskClosable && props.onOff(e);
+    props.maskClosable && props.onNo(e)
   }
 
-  const component = props.visible &&
-    <Fragment>
+  const component = props.visible && (
+    <>
       <div className={scopedClass('dialog')}>
-        {
-          props.maskVisible && <div className={scopedClass('mask')} onClick={onClickMask}></div>
-        }
+        {props.maskVisible && (
+          <div className={scopedClass('mask')} onClick={onClickMask}></div>
+        )}
         <div className={scopedClass('content')}>
-          <Icon className={scopedClass('close')} name="close" onClick={onOff} />
+          <Icon className={scopedClass('close')} name="close" onClick={onNo} />
           <header className={scopedClass('header')}>
             {props.title || '提示'}
           </header>
           <main className={scopedClass('main')}>{props.children}</main>
 
-          {
-            props.buttons && props.buttons.length > 0 &&
+          {props.buttons && props.buttons.length > 0 && (
             <footer className={scopedClass('footer')}>
-              {props.buttons.map((button, index) => React.cloneElement(button, { key: index }))}
+              {props.buttons.map((button, index) =>
+                React.cloneElement(button, { key: index })
+              )}
             </footer>
-          }
+          )}
         </div>
       </div>
-    </Fragment>
+    </>
+  )
 
-  return ReactDOM.createPortal(component, document.body);
+  return ReactDOM.createPortal(component, document.body)
 }
 
 Dialog.defaultProps = {
   maskVisible: true,
-  maskClosable: true
+  maskClosable: true,
 }
 
 const modal = (
   content: React.ReactNode,
   buttons?: Array<React.ReactElement>,
-  afterClose?: () => void,
+  afterClose?: () => void
 ) => {
   const component = (
     <Dialog
       visible={true}
       buttons={buttons}
-      onOff={() => {
-        close();
-        afterClose && afterClose();
+      onNo={() => {
+        close()
+        afterClose && afterClose()
       }}
     >
       {content}
-    </Dialog >
+    </Dialog>
   )
-  const div = document.createElement("div")
+  const div = document.createElement('div')
   const close = () => {
     ReactDOM.render(React.cloneElement(component, { visible: false }), div)
     ReactDOM.unmountComponentAtNode(div)
@@ -83,37 +85,37 @@ const modal = (
   document.body.appendChild(div)
   ReactDOM.render(component, div)
 
-  return close;
+  return close
 }
 
 const alert = (content: string) => {
-  const button = <button onClick={() => close()}>ok</button>;
-  const close = modal(content, [button]);
-};
+  const button = <button onClick={() => close()}>ok</button>
+  const close = modal(content, [button])
+}
 
 const confirm = (
   content: string,
-  onOnCallBack?: () => void,
-  onOffCallBack?: () => void
+  onYesCallBack?: () => void,
+  onNoCallBack?: () => void
 ) => {
-  const onOn = () => {
+  const onYes = () => {
     close()
-    onOnCallBack && onOnCallBack()
+    onYesCallBack && onYesCallBack()
   }
 
-  const onOff = () => {
+  const onNo = () => {
     close()
-    onOffCallBack && onOffCallBack()
+    onNoCallBack && onNoCallBack()
   }
 
   const buttons = [
-    <button onClick={onOn}>yes</button>,
-    <button onClick={onOff}>no</button>
-  ];
+    <button onClick={onYes}>yes</button>,
+    <button onClick={onNo}>no</button>,
+  ]
 
-  const close = modal(content, buttons, onOffCallBack);
+  const close = modal(content, buttons, onNoCallBack)
 }
 
 export { modal, alert, confirm }
 
-export default Dialog;
+export default Dialog
