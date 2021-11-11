@@ -14,7 +14,7 @@ interface IProps {
   onNo: React.MouseEventHandler
 }
 
-const scopedClass = classPrefixMaker('hit-ui')
+const scopedClass = classPrefixMaker('hit-ui-dialog')
 
 const Dialog: React.FC<IProps> = (props) => {
   const onNo: React.MouseEventHandler = (e) => {
