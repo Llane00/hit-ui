@@ -4,6 +4,7 @@ import Header from './header'
 import Content from './content'
 import Footer from './footer'
 import Aside from './aside'
+import './layout.example.scss'
 
 const layoutExample: FC = () => {
   return (

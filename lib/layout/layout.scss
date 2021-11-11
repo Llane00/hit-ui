@@ -1,29 +1,16 @@
-$color1: #1d3ad0;
-$color2: #d01c58;
-$color3: #4a1698;
-$color4: #c62ccf;
-
 .hit-ui-layout {
   display: flex;
   flex-direction: column;
 
-  &-header {
-    background-color: $color2;
-  }
+  &-header {}
 
   &-content {
     flex-grow: 1;
-
-    background-color: $color1;
   }
 
-  &-footer {
-    background-color: $color3;
-  }
+  &-footer {}
 
-  &-aside {
-    background-color: $color4;
-  }
+  &-aside {}
 
   & & {
     flex-grow: 1;
