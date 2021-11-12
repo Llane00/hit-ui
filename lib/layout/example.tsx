@@ -1,17 +1,13 @@
 import React, { FC } from 'react'
-import Layout from './layout'
-import Header from './header'
-import Content from './content'
-import Footer from './footer'
-import Aside from './aside'
-import './layout.example.scss'
+import { Layout, Header, Content, Footer, Aside } from './index'
+import './example.scss'
 
-const layoutExample: FC = () => {
+const LayoutExample: FC = () => {
   return (
-    <div>
+    <div className="example-style">
       <div>layout example</div>
       <div>
-        <h1>第一个例子</h1>
+        <h1>example 1</h1>
         <Layout style={{ height: 500 }} className="test1 test2">
           <Header>header</Header>
           <Content>content</Content>
@@ -20,7 +16,7 @@ const layoutExample: FC = () => {
       </div>
 
       <div>
-        <h1>第二个例子</h1>
+        <h1>example 2</h1>
         <Layout style={{ height: 500 }} className="test1 test2">
           <Header>header</Header>
           <Layout>
@@ -32,7 +28,7 @@ const layoutExample: FC = () => {
       </div>
 
       <div>
-        <h1>第三个例子</h1>
+        <h1>example 3</h1>
         <Layout style={{ height: 500 }} className="test1 test2">
           <Header>header</Header>
           <Layout>
@@ -44,7 +40,7 @@ const layoutExample: FC = () => {
       </div>
 
       <div>
-        <h1>第四个例子</h1>
+        <h1>example 4</h1>
         <Layout style={{ height: 500 }} className="test1 test2">
           <Aside>aside</Aside>
           <Layout>
@@ -58,4 +54,4 @@ const layoutExample: FC = () => {
   )
 }
 
-export default layoutExample
+export default LayoutExample

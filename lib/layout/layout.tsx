@@ -10,7 +10,7 @@ interface IProps extends React.HTMLAttributes<HTMLElement> {
   children: ReactElement | Array<ReactElement>
 }
 
-const layout: FC<IProps> = (props) => {
+const Layout: FC<IProps> = (props) => {
   const { className, ...rest } = props
   const children = props.children as Array<ReactElement>
   const hasAside = children.reduce((result, node) => {
@@ -29,4 +29,4 @@ const layout: FC<IProps> = (props) => {
   )
 }
 
-export default layout
+export default Layout

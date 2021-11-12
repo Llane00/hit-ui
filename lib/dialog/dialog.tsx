@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './dialog.scss'
-import Icon from '../icon/icon'
+import Icon from '../icon'
 import classPrefixMaker from '../utils/classPrefixMaker'
 
 interface IProps {
@@ -116,6 +116,4 @@ const confirm = (
   const close = modal(content, buttons, onNoCallBack)
 }
 
-export { modal, alert, confirm }
-
-export default Dialog
+export { Dialog, modal, alert, confirm }

@@ -5,7 +5,7 @@ const scopedClass = classPrefixMaker('hit-ui-layout')
 
 interface IProps extends React.HTMLAttributes<HTMLElement> {}
 
-const footer: FC<IProps> = (props) => {
+const Footer: FC<IProps> = (props) => {
   const { className, ...rest } = props
 
   return (
@@ -15,4 +15,4 @@ const footer: FC<IProps> = (props) => {
   )
 }
 
-export default footer
+export default Footer

@@ -1,0 +1,40 @@
+$color1: #1d3bd0c4;
+$color2: #d01c58c4;
+$color3: #4a1698c4;
+$color4: #c72ccfc4;
+
+.example-style {
+  .hit-ui-layout {
+    color: #fff;
+
+    &-header {
+      height: 64px;
+      padding: 0 50px;
+      line-height: 64px;
+      text-align: center;
+      background-color: $color2;
+    }
+
+    &-content {
+      min-height: 120px;
+      line-height: 120px;
+      text-align: center;
+      background-color: $color1;
+    }
+
+    &-footer {
+      padding: 24px 50px;
+      text-align: center;
+      background-color: $color3;
+    }
+
+    &-aside {
+      padding: 24px 50px;
+      // max-width: 200px;
+      // min-width: 200px;
+      // width: 200px;
+      text-align: center;
+      background-color: $color4;
+    }
+  }
+}
