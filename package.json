@@ -31,7 +31,7 @@
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-router": "^6.0.2",
+    "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
@@ -58,7 +58,6 @@
     "node-sass": "^4.11.0",
     "prism-react-renderer": "^1.2.1",
     "raw-loader": "^4.0.2",
-    "react-router": "^6.0.2",
     "react-test-renderer": "^16.8.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
