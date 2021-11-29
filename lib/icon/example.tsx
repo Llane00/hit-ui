@@ -1,9 +1,9 @@
-import React, { FC, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import Icon from '.'
 
-import classPrefixMaker from '../utils/classPrefixMaker'
+import classPrefixMaker from '../../lib/utils/classPrefixMaker'
 
-const IconExample: FC = () => {
+export default function () {
   const scopedClass = classPrefixMaker('hit-ui')
 
   const iconClickHandle = useCallback((iconName) => {
@@ -40,5 +40,3 @@ const IconExample: FC = () => {
     </div>
   )
 }
-
-export default IconExample

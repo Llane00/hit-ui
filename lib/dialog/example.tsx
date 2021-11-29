@@ -1,7 +1,7 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import Dialog, { alert, confirm, modal } from './index'
 
-const DialogExample: FC = () => {
+export default function () {
   const [visible, setVisible] = useState(false)
 
   const openModal = () => {
@@ -96,5 +96,3 @@ const DialogExample: FC = () => {
     </div>
   )
 }
-
-export default DialogExample

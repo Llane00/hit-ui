@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Layout, Header, Content, Footer, Aside } from './index'
 import './example.scss'
 
-const LayoutExample: FC = () => {
+export default function () {
   return (
     <div className="example-style">
       <div>layout example</div>
@@ -53,5 +53,3 @@ const LayoutExample: FC = () => {
     </div>
   )
 }
-
-export default LayoutExample
