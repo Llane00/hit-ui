@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom'
 
-import { Layout, Header, Content, Footer, Aside } from '../lib/layout'
+import { Layout, Header, Content, Footer, Aside } from './layout'
 import IconDemo from './icon/demo'
 import DialogDemo from './dialog/demo'
 import LayoutDemo from './layout/demo'
 import Hello from './hello'
 
-import './index.scss'
+import './example.scss'
 
 ReactDOM.render(
   <Router>

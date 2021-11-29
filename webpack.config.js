@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    hitui: path.join(__dirname, './lib/index.tsx')
+    hitui: path.join(__dirname, './lib/example.tsx')
   },
   output: {
     path: path.join(__dirname, './dist/lib'),
