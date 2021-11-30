@@ -1,0 +1,36 @@
+$tableHeadbg: #e6e5e5;
+$borderColor: #cbcbcb;
+
+td,
+th {
+  padding: 0;
+}
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid $borderColor;
+}
+
+table td,
+table th {
+  margin: 0;
+  padding: .5em 1em;
+  border-left: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
+  font-size: inherit;
+  overflow: visible;
+}
+
+table thead {
+  background-color: $tableHeadbg;
+  color: #000;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+table td {
+  background-color: transparent;
+}

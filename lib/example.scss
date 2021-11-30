@@ -101,3 +101,20 @@ $active-font-color: #0b5fff;
     margin-bottom: $margin;
   }
 }
+
+.checkbox-list-example-main {
+  display: flex;
+  margin-top: $margin;
+
+  .data-list-ct {
+    margin-left: $margin;
+
+    h2 {
+      margin-bottom: 10px
+    }
+
+    li {
+      list-style: none;
+    }
+  }
+}
