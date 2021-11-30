@@ -4,19 +4,29 @@ import './checkbox.scss'
 
 const scopedClass = classPrefixMaker('hit-ui-checkbox')
 
-interface IProps extends React.InputHTMLAttributes<Element> {}
+interface IProps extends React.HTMLAttributes<Element> {}
 
 export const Checkbox: FC<IProps> = (props) => {
   const { className, children, ...restProps } = props
+
+  const createText = () => {
+    if (typeof children !== 'string') {
+      return ''
+    }
+
+    return <span className={scopedClass('label')}>{children}</span>
+  }
+
   return (
-    <input
-      type="checkbox"
-      className={scopedClass('', {
-        extra: className,
-      })}
-      {...restProps}
-    >
-      {children}
-    </input>
+    <div className={scopedClass('')}>
+      <input
+        type="checkbox"
+        className={scopedClass('input', {
+          extra: className,
+        })}
+        {...restProps}
+      />
+      {createText()}
+    </div>
   )
 }
