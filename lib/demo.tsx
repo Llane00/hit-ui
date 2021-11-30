@@ -33,7 +33,7 @@ export const Demo: FC<IProps> = (props) => {
         className="demo-code-visible-btn"
         onClick={() => setCodeVisible((codeVisible) => !codeVisible)}
       >
-        {codeVisible ? '隐藏' : '查看'}事例代码
+        {codeVisible ? 'hide' : 'show'} code
       </button>
       {codeVisible && codeComponent}
     </div>

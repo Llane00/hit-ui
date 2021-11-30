@@ -34,7 +34,7 @@ const Dialog: React.FC<IProps> = (props) => {
         <div className={scopedClass('content')}>
           <Icon className={scopedClass('close')} name="close" onClick={onNo} />
           <header className={scopedClass('header')}>
-            {props.title || '提示'}
+            {props.title || 'Tips'}
           </header>
           <main className={scopedClass('main')}>{props.children}</main>
 

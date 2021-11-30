@@ -101,7 +101,7 @@ export const CheckboxList: FC<IProps> = ({
               ))}
               <td>
                 <Button type="warn" onClick={() => removeItem(item.id)}>
-                  删除
+                  delete
                 </Button>
               </td>
             </tr>

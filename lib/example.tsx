@@ -16,7 +16,7 @@ ReactDOM.render(
     <Layout className="page-main-layout">
       <Header className="page-header">
         <NavLink to="/">
-          <span className="logo">Hit-ui</span>
+          <span className="logo">Hit-UI</span>
         </NavLink>
       </Header>
       <Layout>

@@ -102,11 +102,27 @@ $active-font-color: #0b5fff;
   }
 }
 
-.checkbox-list-example-main {
+.hello-content {
+
+  >h1 {
+    font-size: 50px;
+  }
+
+  >.introduce-content {
+    font-size: 18px;
+  }
+
+  >.best-wish {
+    margin-top: $margin;
+    font-size: 18px;
+  }
+}
+
+.checkbox-list-example-content {
   display: flex;
   margin-top: $margin;
 
-  .data-list-ct {
+  .data-list-content {
     margin-left: $margin;
 
     h2 {

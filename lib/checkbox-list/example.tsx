@@ -16,21 +16,21 @@ export default function () {
     <div>
       <h2>checkbox list example</h2>
 
-      <div className="checkbox-list-example-main">
-        <div className="checkbox-list-ct">
+      <div className="checkbox-list-example-content">
+        <div className="checkbox-list-content">
           <CheckboxList
             data={testData}
-            headerCells={['选择', 'ID', '姓名', '得分', '删除']}
+            headerCells={['select', 'ID', 'Name', 'Score', 'delete']}
             allCheckedTip={{
-              all: '全部选择',
-              none: '全部撤销',
+              all: 'Select all',
+              none: 'Cancel all',
             }}
             onCheckedDataChange={getCheckedData}
           ></CheckboxList>
         </div>
 
-        <div className="data-list-ct">
-          <h2>选中的内容：</h2>
+        <div className="data-list-content">
+          <h2>selected data：</h2>
           <ul>
             {dataList && dataList.length > 0 ? (
               dataList.map((item) => {
@@ -41,7 +41,7 @@ export default function () {
                 )
               })
             ) : (
-              <p>暂无数据</p>
+              <p>no data</p>
             )}
           </ul>
         </div>

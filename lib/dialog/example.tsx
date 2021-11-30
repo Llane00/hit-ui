@@ -7,8 +7,8 @@ export default function () {
   const openModal = () => {
     const close = modal(
       <div>
-        <h1>你好</h1>
-        <button onClick={() => close()}>关闭</button>
+        <h1>hello</h1>
+        <button onClick={() => close()}>close</button>
       </div>,
       [],
       () => {
@@ -21,7 +21,7 @@ export default function () {
     <div>
       <div>
         <h2>example 1</h2>
-        <button onClick={() => setVisible(!visible)}>弹出Dialog</button>
+        <button onClick={() => setVisible(!visible)}>show Dialog</button>
 
         <Dialog
           visible={visible}
@@ -60,7 +60,7 @@ export default function () {
       </div>
 
       <div>
-        <h2>example 2 alert函数式调用 Dialog</h2>
+        <h2>example 2 alert use function to show Dialog</h2>
         <button
           onClick={() => {
             alert('111')
@@ -71,7 +71,7 @@ export default function () {
       </div>
 
       <div>
-        <h2>example 3 confirm函数式调用 Dialog</h2>
+        <h2>example 3 confirm use function to show Dialog</h2>
         <button
           onClick={() => {
             confirm(
@@ -90,7 +90,7 @@ export default function () {
       </div>
 
       <div>
-        <h2>example 4 modal函数式调用 Dialog</h2>
+        <h2>example 4 modal use function to show Dialog</h2>
         <button onClick={() => openModal()}>modal</button>
       </div>
     </div>
