@@ -10,6 +10,7 @@ interface IProps {
   buttons: React.ReactFragment
   onChange: (e: IFormData) => void
   onSubmit: React.FormEventHandler<HTMLFormElement>
+  errors: { [key: string]: string[] }
 }
 
 export const Form: FC<IProps> = (props) => {
@@ -29,16 +30,18 @@ export const Form: FC<IProps> = (props) => {
     <form onSubmit={onSubmit}>
       {props.fields.map((field) => (
         <div key={field.name}>
-          {field.label}
-          <input
-            type={field.input.type}
-            value={formData[field.name]}
-            onChange={(e) => onInputChange(field.name, e.target.value)}
-          />
+          <div>
+            {field.label}
+            <input
+              type={field.input.type}
+              value={formData[field.name]}
+              onChange={(e) => onInputChange(field.name, e.target.value)}
+            />
+          </div>
+          <div>{props.errors[field.name]}</div>
         </div>
       ))}
       <div>{props.buttons}</div>
-      {props.children}
     </form>
   )
 }

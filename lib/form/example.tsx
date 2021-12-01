@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react'
 import { Form, IFormData } from './form'
+import validator, { noError } from './validator'
 
 export const FormExample: FC = () => {
   const [formData, setFormData] = useState<IFormData>({
@@ -16,11 +17,33 @@ export const FormExample: FC = () => {
     setFormData(newValue)
   }
 
+  const [errors, setErrors] = useState({})
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     // check data
+    const rules = [
+      {
+        key: 'username',
+        required: true,
+        maxLength: 12,
+        minLength: 8,
+        pattern: /^[A-aZ-z0-9]+$/,
+      },
+      {
+        key: 'password',
+        required: true,
+        maxLength: 8,
+        minLength: 8,
+        pattern: /^[A-aZ-z0-9!@#$%^&*()-+]+$/,
+      },
+    ]
+    setErrors(validator(formData, rules))
 
     // post data
-    console.log(formData)
+    if (noError(errors)) {
+      console.log('post data', formData, errors)
+    } else {
+      console.log('error', errors)
+    }
   }
   return (
     <Form
@@ -34,8 +57,7 @@ export const FormExample: FC = () => {
       }
       onChange={onChange}
       onSubmit={onSubmit}
-    >
-      {JSON.stringify(formData)}
-    </Form>
+      errors={errors}
+    ></Form>
   )
 }
