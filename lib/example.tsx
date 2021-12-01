@@ -8,6 +8,7 @@ import IconDemo from './icon/demo'
 import DialogDemo from './dialog/demo'
 import LayoutDemo from './layout/demo'
 import CheckboxDemo from './checkbox-list/demo'
+import { FormExample as FormDemo } from './form/example'
 
 import './example.scss'
 
@@ -37,6 +38,9 @@ ReactDOM.render(
             <li>
               <NavLink to="/checkbox-list">checkbox-list</NavLink>
             </li>
+            <li>
+              <NavLink to="/form">form</NavLink>
+            </li>
           </ul>
         </Aside>
         <Content className="page-content">
@@ -45,6 +49,7 @@ ReactDOM.render(
           <Route path="/dialog" component={DialogDemo} />
           <Route path="/layout" component={LayoutDemo} />
           <Route path="/checkbox-list" component={CheckboxDemo} />
+          <Route path="/form" component={FormDemo} />
 
           <Footer className="page-footer">
             <p>&copy; Llane00, All rights reserved.</p>
