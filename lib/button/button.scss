@@ -1,31 +1,64 @@
 @import '../hit-ui.scss';
 
 .hit-ui-btn {
-  padding: .2em .8em;
+  padding: 4px 10px;
   color: $fontColor;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   background-color: transparent;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 
-  &.btn-primary {
+  &-no-style {
+    background-color: #FFF;
+    border: 1px solid #ddd;
+
+    &:hover,
+    &:focus {
+      color: $primary;
+      background-color: lighten(#eee, 10%);
+      border-color: lighten($primary, 10%);
+    }
+  }
+
+  &-primary {
     color: #FFF;
     background-color: $primary;
+
+    &:hover,
+    &:focus {
+      background-color: lighten($primary, 10%);
+    }
   }
 
-  &.btn-success {
+  &-success {
     color: #FFF;
     background-color: $success;
+
+    &:hover,
+    &:focus {
+      background-color: lighten($success, 10%);
+    }
   }
 
-  &.btn-warn {
+  &-warn {
     color: #FFF;
     background-color: $warn;
+
+    &:hover,
+    &:focus {
+      background-color: lighten($warn, 10%);
+    }
   }
 
-  &.btn-danger {
+  &-danger {
     color: #FFF;
     background-color: $danger;
+
+    &:hover,
+    &:focus {
+      background-color: lighten($danger, 10%);
+    }
   }
 }

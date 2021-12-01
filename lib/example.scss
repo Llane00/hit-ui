@@ -13,7 +13,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: normal;
+  font-weight: normal
 }
 
 a {
@@ -100,27 +100,51 @@ $active-font-color: #0b5fff;
   .demo-code-visible-btn {
     margin-bottom: $margin;
   }
+
+  .code-box {
+    .prism-code {
+      padding: 22px 24px;
+      border-radius: 2px;
+    }
+  }
 }
 
 .hello-content {
 
   >h1 {
-    font-size: 50px;
+    font-size: 80px;
   }
 
   >.introduce-content {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   >.best-wish {
     margin-top: $margin;
-    font-size: 18px;
+    font-size: 22px;
+  }
+}
+
+.dialog-example-content {
+  .example-item-content {
+    padding-top: $padding;
+    padding-bottom: $padding;
+    border-bottom: 1px solid #ddd;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
   }
 }
 
 .checkbox-list-example-content {
   display: flex;
-  margin-top: $margin;
+  margin-top: 20px;
 
   .data-list-content {
     margin-left: $margin;

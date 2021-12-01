@@ -27,19 +27,29 @@ ReactDOM.render(
           </h2>
           <ul>
             <li>
-              <NavLink to="/icon">Icon</NavLink>
+              <NavLink to="/icon">
+                <div>Icon</div>
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/dialog">Dialog</NavLink>
+              <NavLink to="/dialog">
+                <div>Dialog</div>
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/layout">Layout</NavLink>
+              <NavLink to="/layout">
+                <div>Layout</div>
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/checkbox-list">checkbox-list</NavLink>
+              <NavLink to="/checkbox-list">
+                <div>checkbox-list</div>
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/form">form</NavLink>
+              <NavLink to="/form">
+                <div>form</div>
+              </NavLink>
             </li>
           </ul>
         </Aside>
@@ -52,13 +62,13 @@ ReactDOM.render(
           <Route path="/form" component={FormDemo} />
 
           <Footer className="page-footer">
-            <p>&copy; Llane00, All rights reserved.</p>
             <p>
+              &copy;{' '}
               <a href="https://github.com/Llane00" target="_blank">
-                https://github.com/Llane00
+                Llane00
               </a>
+              , All rights reserved.
             </p>
-            <p>bluetinestyle@126.com</p>
           </Footer>
         </Content>
       </Layout>

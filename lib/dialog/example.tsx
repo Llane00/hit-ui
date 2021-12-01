@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Dialog, { alert, confirm, modal } from './index'
+import Button from '../../lib/button'
 
 export default function () {
   const [visible, setVisible] = useState(false)
@@ -8,7 +9,7 @@ export default function () {
     const close = modal(
       <div>
         <h1>hello</h1>
-        <button onClick={() => close()}>close</button>
+        <Button onClick={() => close()}>close</Button>
       </div>,
       [],
       () => {
@@ -18,28 +19,28 @@ export default function () {
   }
 
   return (
-    <div>
-      <div>
-        <h2>example 1</h2>
-        <button onClick={() => setVisible(!visible)}>show Dialog</button>
+    <div className="dialog-example-content">
+      <div className="example-item-content">
+        <h2># example 1</h2>
+        <Button onClick={() => setVisible(!visible)}>show Dialog</Button>
 
         <Dialog
           visible={visible}
           buttons={[
-            <button
+            <Button
               onClick={() => {
                 setVisible(false)
               }}
             >
               Yes
-            </button>,
-            <button
+            </Button>,
+            <Button
               onClick={() => {
                 setVisible(false)
               }}
             >
               No
-            </button>,
+            </Button>,
           ]}
           maskClosable={false}
           onNo={() => {
@@ -48,31 +49,31 @@ export default function () {
         >
           <div>
             <div>balabala</div>
-            <button
+            <Button
               onClick={() => {
                 setVisible(false)
               }}
             >
               close
-            </button>
+            </Button>
           </div>
         </Dialog>
       </div>
 
-      <div>
-        <h2>example 2 alert use function to show Dialog</h2>
-        <button
+      <div className="example-item-content">
+        <h2># example 2 alert use function to show Dialog</h2>
+        <Button
           onClick={() => {
             alert('111')
           }}
         >
           alert
-        </button>
+        </Button>
       </div>
 
-      <div>
-        <h2>example 3 confirm use function to show Dialog</h2>
-        <button
+      <div className="example-item-content">
+        <h2># example 3 confirm use function to show Dialog</h2>
+        <Button
           onClick={() => {
             confirm(
               '111',
@@ -86,12 +87,12 @@ export default function () {
           }}
         >
           confirm
-        </button>
+        </Button>
       </div>
 
-      <div>
-        <h2>example 4 modal use function to show Dialog</h2>
-        <button onClick={() => openModal()}>modal</button>
+      <div className="example-item-content">
+        <h2># example 4 modal use function to show Dialog</h2>
+        <Button onClick={() => openModal()}>modal</Button>
       </div>
     </div>
   )

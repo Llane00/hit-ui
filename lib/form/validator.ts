@@ -40,19 +40,19 @@ const validator = (formData: IFormData, formRules: IFormRules): IFormErrors => {
     const value = formData[key]
 
     if (rule.required && isEmpty(value)) {
-      addError(key, '必填')
+      addError(key, 'required')
     }
 
     if (rule.minLength && !isEmpty(value) && value.length < rule.minLength) {
-      addError(key, '太短')
+      addError(key, 'too short')
     }
 
     if (rule.maxLength && !isEmpty(value) && value.length > rule.maxLength) {
-      addError(key, '太长')
+      addError(key, 'too long')
     }
 
     if (rule.pattern && !rule.pattern.test(value)) {
-      addError(key, '格式不正确')
+      addError(key, 'invalid value')
     }
   })
   return errors

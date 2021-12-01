@@ -1,0 +1,27 @@
+.hit-ui-form {
+  &-row {
+    margin: 0 auto 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-main {
+      display: flex;
+      align-items: center;
+
+      .hit-ui-form-label {
+        min-width: 4em;
+        max-width: 6em;
+      }
+
+      .hit-ui-form-label+.hit-ui-input {
+        margin-left: 14px;
+      }
+    }
+  }
+
+  .hit-ui-btn {
+    margin-right: 14px;
+  }
+}

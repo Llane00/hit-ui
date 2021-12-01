@@ -1,30 +1,27 @@
-import React, { FC, useCallback } from 'react'
+import React, { FC } from 'react'
 import classPrefixMaker from '../utils/classPrefixMaker'
 import './button.scss'
 
 const scopedClass = classPrefixMaker('hit-ui-btn')
-
-const buttonTypes: string[] = ['primary', 'success', 'warn', 'danger']
-
-interface IProps extends React.HTMLAttributes<HTMLButtonElement> {
-  type?: string
+interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  styleType?: 'no-style' | 'primary' | 'success' | 'warn' | 'danger'
 }
 
 export const Button: FC<IProps> = (props) => {
-  const { type, className, children, ...restProps } = props
-
-  const createStyleClass = useCallback(() => {
-    return type && buttonTypes.includes(type) ? `btn-${type}` : 'btn-primary'
-  }, [type])
+  const { styleType, type, className, children, ...restProps } = props
 
   return (
     <button
-      className={scopedClass('', {
-        extra: [className, createStyleClass()].join(' '),
+      className={scopedClass(['', styleType], {
+        extra: className,
       })}
       {...restProps}
     >
       {children}
     </button>
   )
+}
+
+Button.defaultProps = {
+  styleType: 'no-style',
 }

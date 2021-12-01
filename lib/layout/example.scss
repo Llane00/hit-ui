@@ -4,6 +4,17 @@ $color3: #4a1698c4;
 $color4: #c72ccfc4;
 
 .example-style {
+  .example-item-content {
+    margin: 30px auto 0;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #ddd;
+
+    h1 {
+      margin-bottom: 1em;
+      font-size: 22px;
+    }
+  }
+
   .hit-ui-layout {
     color: #fff;
 

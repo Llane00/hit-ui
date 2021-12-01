@@ -1,5 +1,6 @@
 import React, { useState, FC } from 'react'
 import Highlight, { defaultProps } from 'prism-react-renderer'
+import Button from './button'
 
 interface IProps {
   code: string
@@ -29,12 +30,13 @@ export const Demo: FC<IProps> = (props) => {
   return (
     <div className="demo-box">
       <div className="demo-component-box">{props.children}</div>
-      <button
+      <Button
         className="demo-code-visible-btn"
+        styleType="primary"
         onClick={() => setCodeVisible((codeVisible) => !codeVisible)}
       >
         {codeVisible ? 'hide' : 'show'} code
-      </button>
+      </Button>
       {codeVisible && codeComponent}
     </div>
   )

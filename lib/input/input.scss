@@ -1,0 +1,16 @@
+@import '../hit-ui.scss';
+
+.hit-ui-input {
+  padding: 4px 8px;
+  line-height: 22px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px fade-out($primary, 1);
+  transition: box-shadow 250ms;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 2px fade-out($primary, 0.5);
+  }
+}

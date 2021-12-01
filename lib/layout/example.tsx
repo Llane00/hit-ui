@@ -5,9 +5,8 @@ import './example.scss'
 export default function () {
   return (
     <div className="example-style">
-      <div>layout example</div>
-      <div>
-        <h1>example 1</h1>
+      <div className="example-item-content">
+        <h1># example 1</h1>
         <Layout style={{ height: 500 }} className="test1 test2">
           <Header>header</Header>
           <Content>content</Content>
@@ -15,8 +14,8 @@ export default function () {
         </Layout>
       </div>
 
-      <div>
-        <h1>example 2</h1>
+      <div className="example-item-content">
+        <h1># example 2</h1>
         <Layout style={{ height: 500 }} className="test1 test2">
           <Header>header</Header>
           <Layout>
@@ -27,8 +26,8 @@ export default function () {
         </Layout>
       </div>
 
-      <div>
-        <h1>example 3</h1>
+      <div className="example-item-content">
+        <h1># example 3</h1>
         <Layout style={{ height: 500 }} className="test1 test2">
           <Header>header</Header>
           <Layout>
@@ -39,8 +38,8 @@ export default function () {
         </Layout>
       </div>
 
-      <div>
-        <h1>example 4</h1>
+      <div className="example-item-content">
+        <h1># example 4</h1>
         <Layout style={{ height: 500 }} className="test1 test2">
           <Aside>aside</Aside>
           <Layout>

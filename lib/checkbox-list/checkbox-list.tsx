@@ -100,7 +100,7 @@ export const CheckboxList: FC<IProps> = ({
                 <td key={prop}>{item[prop]}</td>
               ))}
               <td>
-                <Button type="warn" onClick={() => removeItem(item.id)}>
+                <Button styleType="warn" onClick={() => removeItem(item.id)}>
                   delete
                 </Button>
               </td>

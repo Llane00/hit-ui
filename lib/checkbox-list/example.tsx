@@ -14,8 +14,6 @@ export default function () {
 
   return (
     <div>
-      <h2>checkbox list example</h2>
-
       <div className="checkbox-list-example-content">
         <div className="checkbox-list-content">
           <CheckboxList
