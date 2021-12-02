@@ -1,23 +1,28 @@
+@import '../hit-ui.scss';
+
 .hit-ui-form {
   &-row {
-    margin: 0 auto 32px;
+    display: flex;
+    align-items: center;
 
     &:last-child {
       margin-bottom: 0;
     }
 
-    &-main {
-      display: flex;
-      align-items: center;
+    .hit-ui-form-label {
+      align-self: flex-start;
+      min-width: 4em;
+      max-width: 6em;
+      line-height: 32px;
+    }
 
-      .hit-ui-form-label {
-        min-width: 4em;
-        max-width: 6em;
-      }
+    .hit-ui-form-label+.hit-ui-form-input-item {
+      margin-left: 14px;
+    }
 
-      .hit-ui-form-label+.hit-ui-input {
-        margin-left: 14px;
-      }
+    .hit-ui-form-error-msg {
+      height: 32px;
+      color: $danger;
     }
   }
 

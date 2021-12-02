@@ -15,6 +15,7 @@ interface IProps {
   onChange: (e: IFormData) => void
   onSubmit: React.FormEventHandler<HTMLFormElement>
   errors: { [key: string]: string[] }
+  errorsDisplayMode?: 'first' | 'all'
 }
 
 export const Form: FC<IProps> = (props) => {
@@ -34,20 +35,28 @@ export const Form: FC<IProps> = (props) => {
     <form className={scopedClass('')} onSubmit={onSubmit}>
       {props.fields.map((field) => (
         <div className={scopedClass('row')} key={field.name}>
-          <div className={scopedClass('row-main')}>
-            <div className={scopedClass('label')}>{field.label}</div>
+          <div className={scopedClass('label')}>{field.label}&nbsp;:</div>
+          <div className={scopedClass('input-item')}>
             <Input
               type={field.input.type}
               value={formData[field.name]}
               onChange={(e) => onInputChange(field.name, e.target.value)}
             />
-          </div>
-          <div className={scopedClass('error-msg')}>
-            {props.errors[field.name]}
+            <div className={scopedClass('error-msg')}>
+              {props.errors[field.name]
+                ? props.errorsDisplayMode === 'first'
+                  ? props.errors[field.name][0]
+                  : props.errors[field.name].join(', ')
+                : ''}
+            </div>
           </div>
         </div>
       ))}
       <div>{props.buttons}</div>
     </form>
   )
+}
+
+Form.defaultProps = {
+  errorsDisplayMode: 'first',
 }
