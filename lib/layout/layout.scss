@@ -18,7 +18,7 @@
   }
 
   &-has-aside {
-    flex-direction: row;
+    flex-direction: row !important;
 
     & .hit-ui-layout {
       flex-direction: column;
