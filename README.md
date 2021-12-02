@@ -6,7 +6,7 @@ You can use very simple code to run every component.
 
 Have Fun! :)
 
-[Hit-ui website](https://llane00.github.io/hit-ui/)
+[Hit-ui website](https://llane.xyz/hit-ui/)
 
 ## install:
 
