@@ -10,7 +10,7 @@ const checkUsernameUnique = (
   fail: () => void
 ) => {
   setTimeout(() => {
-    console.log('拿到结果了', !usenameList.includes(username))
+    console.log('get async result', !usenameList.includes(username))
     if (!usenameList.includes(username)) {
       succeed()
     } else {
@@ -38,7 +38,7 @@ export const FormExample: FC = () => {
 
   const usernameValidator = (username: string) => {
     return new Promise<string>((resolve, reject) => {
-      checkUsernameUnique(username, resolve, () => reject('unique'))
+      checkUsernameUnique(username, resolve, () => reject('username is taken'))
     })
   }
 
@@ -65,7 +65,7 @@ export const FormExample: FC = () => {
 
       validator(formData, rules, (errors) => {
         setErrors(errors)
-        console.log('所有检查都结束了', errors)
+        console.log('check completed', errors)
 
         // post data
         if (noError(errors)) {

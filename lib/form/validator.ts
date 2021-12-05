@@ -33,7 +33,7 @@ const validator = (
   formRules: IFormRules,
   callback: (errors: any) => void
 ): void => {
-  let errors: any = {}
+  let errors: { [key: string]: ErrorType[] } = {}
 
   const addError = (key: string, error: ErrorType) => {
     if (errors[key] === undefined) {
@@ -47,55 +47,65 @@ const validator = (
     const value = formData[key]
     if (rule.required && isEmpty(value)) {
       addError(key, 'required')
-    }
-
-    if (rule.minLength && !isEmpty(value) && value.length < rule.minLength) {
+    } else if (
+      rule.minLength &&
+      !isEmpty(value) &&
+      value.length < rule.minLength
+    ) {
       addError(key, 'too short')
-    }
-
-    if (rule.maxLength && !isEmpty(value) && value.length > rule.maxLength) {
+    } else if (
+      rule.maxLength &&
+      !isEmpty(value) &&
+      value.length > rule.maxLength
+    ) {
       addError(key, 'too long')
-    }
-
-    if (rule.pattern && !rule.pattern.test(value)) {
+    } else if (rule.pattern && !rule.pattern.test(value)) {
       addError(key, 'invalid value')
-    }
-
-    if (rule.validator) {
+    } else if (rule.validator) {
       addError(key, rule.validator(value))
     }
   })
 
   const flattenErrors = flat(
     Object.keys(errors).map((key) =>
-      errors[key].map((promise: ErrorType) => [key, promise])
+      errors[key].map<[string, ErrorType]>((promise: ErrorType) => [
+        key,
+        promise,
+      ])
     )
   )
 
-  const newPromises = flattenErrors.map(([key, promiseOrString]) =>
-    (promiseOrString instanceof Promise
-      ? promiseOrString
-      : Promise.reject(promiseOrString)
-    ).then(
+  const newPromises = flattenErrors.map(([key, promiseOrString]) => {
+    const promise =
+      promiseOrString instanceof Promise
+        ? promiseOrString
+        : Promise.reject(promiseOrString)
+    return promise.then<[string, undefined], [string, string]>(
       () => [key, undefined],
       (reason: string) => [key, reason]
     )
-  )
+  })
+
+  function hasError(
+    item: [string, undefined] | [string, string]
+  ): item is [string, string] {
+    return typeof item[1] === 'string'
+  }
 
   Promise.all(newPromises).then((results) => {
-    callback(zip(results.filter((item) => item[1])))
+    callback(zip(results.filter<[string, string]>(hasError)))
   })
 }
 
 export default validator
 
-function flat(array: Array<any>) {
-  let result: Array<any> = []
+function flat<T>(array: Array<T | T[]>) {
+  let result: T[] = []
   array.map((item) => {
     if (item instanceof Array) {
-      result.push(...item)
+      result.push(...(item as T[]))
     } else {
-      result.push(item)
+      result.push(item as T)
     }
   })
   return result
