@@ -3,6 +3,22 @@ import { Form, IFormData } from './form'
 import validator, { noError } from './validator'
 import Button from '../../lib/button'
 
+const usenameList = ['neo', 'ben']
+const checkUsernameUnique = (
+  username: string,
+  succeed: () => void,
+  fail: () => void
+) => {
+  setTimeout(() => {
+    console.log('拿到结果了', !usenameList.includes(username))
+    if (!usenameList.includes(username)) {
+      succeed()
+    } else {
+      fail()
+    }
+  }, 1500)
+}
+
 export const FormExample: FC = () => {
   const [formData, setFormData] = useState<IFormData>({
     username: '',
@@ -19,6 +35,13 @@ export const FormExample: FC = () => {
   }, [])
 
   const [errors, setErrors] = useState({})
+
+  const usernameValidator = (username: string) => {
+    return new Promise<string>((resolve, reject) => {
+      checkUsernameUnique(username, resolve, () => reject('unique'))
+    })
+  }
+
   const onSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       // check data
@@ -27,8 +50,9 @@ export const FormExample: FC = () => {
           key: 'username',
           required: true,
           maxLength: 12,
-          minLength: 8,
+          minLength: 3,
           pattern: /^[A-aZ-z0-9]+$/,
+          validator: usernameValidator,
         },
         {
           key: 'password',
@@ -38,14 +62,18 @@ export const FormExample: FC = () => {
           pattern: /^[A-aZ-z0-9!@#$%^&*()-+]+$/,
         },
       ]
-      setErrors(validator(formData, rules))
 
-      // post data
-      if (noError(errors)) {
-        console.log('post data', formData, errors)
-      } else {
-        console.log('error', errors)
-      }
+      validator(formData, rules, (errors) => {
+        setErrors(errors)
+        console.log('所有检查都结束了', errors)
+
+        // post data
+        if (noError(errors)) {
+          console.log('post data', formData, errors)
+        } else {
+          console.log('error', errors)
+        }
+      })
     },
     [formData, errors]
   )
