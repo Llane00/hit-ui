@@ -3,3 +3,12 @@ $primary: #3591ff;
 $success: #59dc2e;
 $warn: #f7892a;
 $danger: #ff3535;
+
+[class^=hit-ui-] {
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
