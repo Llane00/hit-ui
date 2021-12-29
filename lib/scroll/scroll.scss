@@ -10,4 +10,22 @@
     bottom: 0;
     overflow: auto;
   }
+
+  &-track {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 20px;
+    background: rgb(238, 238, 238);
+  }
+
+  &-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    background: black;
+  }
 }
