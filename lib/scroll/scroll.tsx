@@ -16,6 +16,7 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {}
 
 const Scroll: React.FC<IProps> = (props) => {
   const { className, children, ...restProps } = props
+  const [barVisible, setBarVisible] = useState(true)
   const [scrollWidth, setScrollWidth] = useState(0) //滚动条宽度
   const [barHeight, setBarHeight] = useState(0) //自定义滚动条高度
   const [barScrollTop, _setBarScrollTop] = useState(0) //自定义滚动条top距离
@@ -32,13 +33,22 @@ const Scroll: React.FC<IProps> = (props) => {
   }
 
   const containerRef = useRef<HTMLDivElement>(null)
+  const barVisibleTimerIdRef = useRef<number | null>(null)
   const onScroll: UIEventHandler = (e) => {
+    setBarVisible(true)
     const scrollHeight = containerRef.current!.scrollHeight
     const viewHeight = containerRef.current!.getBoundingClientRect().height
     setBarScrollTop(
       (containerRef.current!.scrollTop * viewHeight) / scrollHeight
     )
+    if (barVisibleTimerIdRef.current !== null) {
+      window.clearTimeout(barVisibleTimerIdRef.current)
+    }
+    barVisibleTimerIdRef.current = window.setTimeout(() => {
+      setBarVisible(false)
+    }, 1000)
   }
+
   useEffect(() => {
     const scrollHeight = containerRef.current!.scrollHeight
     const viewHeight = containerRef.current!.getBoundingClientRect().height
@@ -100,16 +110,18 @@ const Scroll: React.FC<IProps> = (props) => {
       >
         {children}
       </div>
-      <div className={scopedClass('track')}>
-        <div
-          className={scopedClass('bar')}
-          style={{
-            height: barHeight,
-            transform: `translateY(${barScrollTop}px)`,
-          }}
-          onMouseDown={onMouseDownBar}
-        ></div>
-      </div>
+      {barVisible && (
+        <div className={scopedClass('track')}>
+          <div
+            className={scopedClass('bar')}
+            style={{
+              height: barHeight,
+              transform: `translateY(${barScrollTop}px)`,
+            }}
+            onMouseDown={onMouseDownBar}
+          ></div>
+        </div>
+      )}
     </div>
   )
 }
