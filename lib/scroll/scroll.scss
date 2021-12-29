@@ -18,14 +18,14 @@
     bottom: 0;
     height: 100%;
     width: 20px;
-    background: rgb(238, 238, 238);
   }
 
   &-bar {
     position: absolute;
     top: 0;
-    right: 0;
-    width: 20px;
-    background: black;
+    right: 1px;
+    width: 6px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.1);
   }
 }

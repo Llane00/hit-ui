@@ -1,11 +1,20 @@
 import React from 'react'
 import Scroll from './scroll'
+import './example.scss'
 
 const ScrollExample: React.FC = (props) => {
   return (
     <div>
-      <h1>example 1</h1>
-      <Scroll style={{ height: '200px', border: '1px solid red' }}>
+      <h1># example 1</h1>
+      <Scroll
+        className="scroll-example-1"
+        style={{
+          width: '400px',
+          height: '200px',
+          border: '1px solid #eee',
+          borderRadius: '2px',
+        }}
+      >
         <p>1</p>
         <p>2</p>
         <p>3</p>

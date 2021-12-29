@@ -1,0 +1,14 @@
+h1 {
+  margin-bottom: 1em;
+  font-size: 22px;
+}
+
+.scroll-example-1 {
+  p {
+    padding: 2px 4px;
+
+    &:nth-child(even) {
+      background: rgb(249, 249, 249);
+    }
+  }
+}
